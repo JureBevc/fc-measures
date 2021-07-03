@@ -6,7 +6,7 @@ Implementation of various functional connectivity metrics
 
 Basic metrics:
 * ~~Pearson correlation~~
-* Covariance
+* ~~Covariance~~
 * Mutual information
 
 Best metrics from NeuroImage paper:
