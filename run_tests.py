@@ -1,1 +1,5 @@
-from tests import correlation_test
+from tests import correlation_test, covariance_test, mutual_information_test
+
+correlation_test.run_correlation_test()
+covariance_test.run_covariance_test()
+mutual_information_test.run_mutual_information_test()
