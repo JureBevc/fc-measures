@@ -3,5 +3,4 @@ from tests import correlation_test, covariance_test, mutual_information_test, pa
 correlation_test.run_correlation_test()
 covariance_test.run_covariance_test()
 mutual_information_test.run_mutual_information_test()
-mutual_information_test.run_mutual_information_test()
 partial_correlation_test.run_partial_correlation_test()
