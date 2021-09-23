@@ -130,3 +130,6 @@ dmypy.json
 
 # Visual Studio Code
 .vscode/
+
+matlab/
+tests/data/HCP_rs_ts_bold1_Glasser.mat
