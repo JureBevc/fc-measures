@@ -8,7 +8,24 @@ function [w,wp,m] = LassoShooting(X, y, lambda,varargin)
 % Modifications:
 %   We precompute the Hessian diagonals, since they do not 
 %   change between iterations
-[maxIter,verbose,optTol,zeroThreshold] = process_options(varargin,'maxIter',10000,'verbose',2,'optTol',1e-5,'zeroThreshold',1e-4);
+% [maxIter,verbose,optTol,zeroThreshold] = process_options(varargin,'maxIter',10000,'verbose',2,'optTol',1e-5,'zeroThreshold',1e-4);
+
+maxIter = 10000;
+verbose = 0;
+optTol = 1.0e-05;
+zeroThreshold = 1.0e-04;
+
+% disp("---");
+% disp(maxIter);
+% disp("---");
+% disp(verbose);
+% disp("---");
+% disp(optTol);
+% disp("---");
+% disp(zeroThreshold);
+% disp("---");
+
+
 [n p] = size(X);
 
 % Start from the Least Squares solution
@@ -64,4 +81,5 @@ end
 if verbose
 fprintf('Number of iterations: %d\nTotal Shoots: %d\n',m,m*p);
 end
+
 w = beta;

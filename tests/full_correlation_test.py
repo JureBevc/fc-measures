@@ -6,6 +6,6 @@ import numpy as np
 def run_full_correlation_test():
     arr = read_data.read_multiple_from_file("tests/data/sim_ts.txt")
 
-    print("Full correlation")
+    print("\nFull correlation")
     R = full_correlation.full_correlation(arr)
     print(R)

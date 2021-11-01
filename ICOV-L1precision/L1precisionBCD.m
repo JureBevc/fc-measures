@@ -16,6 +16,7 @@ f = zeros(p-1,1);
 % Initial W
 W = S + row*eye(p,p);
 
+
 % Check for qp mex file
 if exist('qpas') == 3
     useQP = 1;
@@ -35,7 +36,9 @@ for iter = 1:maxIter
 
     % Check Primal-Dual gap
     X = W^-1; % W should be PD
+
     gap = trace(S*X) + row*sum(sum(abs(X))) - p;
+
     %fprintf('Iter = %d, OptCond = %.5f\n',iter,gap);
     if gap < optTol
         %fprintf('Solution Found\n');
@@ -56,7 +59,6 @@ for iter = 1:maxIter
 
         % Compute Needed Partitions of W and S
         s_12 = S(mysetdiff(1:p,i),i);
-        
         if useQP
             % Solve as QP
             H = 2*W(mysetdiff(1:p,i),mysetdiff(1:p,i))^-1;
