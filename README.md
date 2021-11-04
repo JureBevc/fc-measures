@@ -84,10 +84,18 @@ Original paper too complex statistically.
 
 - ICOV v Pythonu
 
-- Prijava teme:
-  - Metrike funkcionalne povezanosti
-  - Primerjava metrik...
-  - Implementacija metrik funkcionalne povezanosti
-
-
 - tangent space of covariance matrices (Appendix A)
+
+# Meeting notes
+
+- ICOV je zdaj v celoti v Pythonu
+
+  > https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006196
+
+  - majhna razlika zaradi računanja inverza matrik (4 decimalna mesta)
+
+- Nilearn
+
+  > https://nilearn.github.io/stable/index.html
+
+- DISPOZICIJA DO NASLEDNJIČ - POŠLJI PRED SESTANKOM
