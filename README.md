@@ -26,7 +26,7 @@ Basic metrics:
 Best metrics from NeuroImage paper:
 
 - ~~Partial correlation~~
-- ICOV (currently implemented in with MATLAB, rewrite to Python)
+- ~~ICOV~~
 - Bayes net
 - (Full correlation)
 - (Patel's κ) https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.25093
@@ -64,7 +64,14 @@ Original paper too complex statistically.
 - Simulacija BOLD timeseries
 
   - fmrisim
+
     > https://brainpower.readthedocs.io/en/latest/simulations.html
+
+  - neurolib:
+
+    > https://www.biorxiv.org/content/10.1101/2021.02.18.431886v1.abstract
+
+    > https://github.com/neurolib-dev/neurolib
 
 - Nove članki, novejše metrike (Google scholar, glej citacije originalnega članka)
 
@@ -82,8 +89,6 @@ Original paper too complex statistically.
   - partial correlation
   - tangent space of covariance matrices (Appendix A)
 
-- ICOV v Pythonu
-
 - tangent space of covariance matrices (Appendix A)
 
 # Meeting notes
@@ -94,8 +99,24 @@ Original paper too complex statistically.
 
   - majhna razlika zaradi računanja inverza matrik (4 decimalna mesta)
 
+  > https://www.nature.com/articles/s41598-020-57915-w
+
 - Nilearn
 
   > https://nilearn.github.io/stable/index.html
 
-- DISPOZICIJA DO NASLEDNJIČ - POŠLJI PRED SESTANKOM
+- Vizualizacija signala
+
+- Generator BOLD signala
+
+# Meeting notes
+
+- Neurolib: Nova knjižnica za Python, ima na voljo matriko funkcijske konektivnosti. Je to dovolj za ground truth?
+- Signal resnica + noise, robustnost na noise, evalvacija na oboje
+- Vizualizacija signala: Katere stvari bi bilo smiselno prikazati? Signal, korelacije, vizualizacija grafa/konektoma?
+
+https://d26ua9paks4zq.cloudfront.net/cb/3d/5d5676cd48bc86d0b3c3c10ffd3a/image-getty-98326931.jpg
+
+https://www.fieldtriptoolbox.org/assets/img/workshop/madrid2019/tutorial_erp/tsk_databrowser.png
+
+- TODO: Ostale metrike

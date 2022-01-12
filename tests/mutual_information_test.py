@@ -10,5 +10,3 @@ def run_mutual_information_test():
     print("\nMutual information")
     R = mutual_information.mutual_information(arr)
     print(R)
-    print(ground_truth)
-    print(R - ground_truth)

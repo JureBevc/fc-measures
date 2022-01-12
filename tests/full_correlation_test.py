@@ -10,5 +10,3 @@ def run_full_correlation_test():
     print("\nFull correlation")
     R = full_correlation.full_correlation(arr)
     print(R)
-    print(ground_truth)
-    print(R - ground_truth)

@@ -22,6 +22,7 @@ usable_series = timeseries[:, usevec == 1]
 
 print(f"Input size: {usable_series.shape}")
 
+exit()
 # Run metrics
 print("\nPearson correlation")
 R = pearson.pearson(usable_series)

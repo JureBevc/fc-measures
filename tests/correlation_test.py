@@ -10,5 +10,4 @@ def run_correlation_test():
     print("\nPearson correlation")
     R = pearson.pearson(arr)
     print(R)
-    print(ground_truth)
-    print(R - ground_truth)
+    

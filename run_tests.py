@@ -1,5 +1,5 @@
 from tests import correlation_test, covariance_test, mutual_information_test, partial_correlation_test, full_correlation_test
-from tests import icov_tests
+from tests import icov_tests, tangent_test, cross_correlation_test, transfer_entropy_test, coherence_test
 
 
 correlation_test.run_correlation_test()
@@ -8,3 +8,7 @@ mutual_information_test.run_mutual_information_test()
 partial_correlation_test.run_partial_correlation_test()
 icov_tests.run_icov_test()
 full_correlation_test.run_full_correlation_test()
+tangent_test.run_tangent_test()
+cross_correlation_test.run_cross_correlation_test()
+transfer_entropy_test.run_transfer_entropy_test()
+coherence_test.run_coherence_test()

@@ -10,5 +10,3 @@ def run_icov_test():
     print("\nICOV")
     R = icov.ICOV(arr, 5)
     print(R)
-    print(ground_truth)
-    print(R - ground_truth)

@@ -10,5 +10,3 @@ def run_partial_correlation_test():
     print("\nPartial correlation")
     R = partial_correlation.partial_correlation(arr)
     print(R)
-    print(ground_truth)
-    print(R - ground_truth)
