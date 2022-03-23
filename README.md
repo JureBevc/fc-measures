@@ -119,4 +119,12 @@ https://d26ua9paks4zq.cloudfront.net/cb/3d/5d5676cd48bc86d0b3c3c10ffd3a/image-ge
 
 https://www.fieldtriptoolbox.org/assets/img/workshop/madrid2019/tutorial_erp/tsk_databrowser.png
 
-- TODO: Ostale metrike
+- generirat en signal BOLD z neurolib za osnovo
+- prvo nad dvema časovnima vrstama
+- parameter tuning
+- časovna kompleksnost nad večjimi podatki
+
+# Meeting notes
+
+- Kako primerjati rezultate med seboj, ker niso na istem intervalu?
+- Kako testirati tangent space metriko, ki potrebuje skupino podakov/ljudi?

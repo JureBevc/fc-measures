@@ -134,3 +134,4 @@ dmypy.json
 matlab/
 tests/data/HCP_rs_ts_bold1_Glasser.mat
 simulated/
+notebooks/nilearn_cache/

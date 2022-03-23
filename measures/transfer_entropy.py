@@ -3,6 +3,7 @@ import pyinform
 
 
 def transfer_entropy(arr, k=2):
+    arr[arr < 0] = 0
 
     result = np.zeros((arr.shape[0], arr.shape[0]))
     for i in range(len(arr)):
