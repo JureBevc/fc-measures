@@ -5,16 +5,14 @@ from measures.L1precisionBCD import L1precisionBCD
 
 def ICOV(arr, lamb=5):
     cov = np.cov(arr)
-    input_array = cov / np.mean(np.diag(cov))
+    invcov = np.linalg.pinv(cov)
+    result = np.zeros(invcov.shape)
+    for i in range(invcov.shape[0]):
+        for j in range(invcov.shape[1]):
+            result[i][j] = - invcov[i][j] / np.sqrt(invcov[i][i] * invcov[j][j])
 
-    #eng = matlab.engine.start_matlab()
-    # eng.cd("ICOV-L1precision")
-    #matlab_arr = matlab.double(input_array.tolist())
-    #icov = eng.L1precisionBCD(matlab_arr, float(lamb / 1000))
-    #icov = np.array(icov)
-    #print("MATLAB ICOV:")
-    # print(icov)
+    #input_array = cov / np.mean(np.diag(cov))
 
-    icov = L1precisionBCD(input_array, float(lamb / 1000))
+    #icov = L1precisionBCD(input_array, float(lamb / 1000))
 
-    return icov
+    return result

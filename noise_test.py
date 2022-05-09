@@ -1,4 +1,4 @@
-from measures import pearson, covariance, mutual_information, partial_correlation, icov, tangent, cross_correlation, transfer_entropy, coherence
+from measures import pearson, covariance, mutual_information, partial_correlation, icov, cross_correlation, transfer_entropy, coherence
 import numpy as np
 import pandas as pd
 import neurolib
@@ -43,7 +43,7 @@ for noise_amount in noise_amounts:
     mutual_information_results.append(mutual_information.mutual_information(np.array([original_signal, signal_noised]))[0][1])
 plot_df["Mutual information"] = mutual_information_results
 
-
+"""
 print("Partial correlation...")
 # Partial correlation
 partial_correlation_results = []
@@ -52,7 +52,7 @@ for noise_amount in noise_amounts:
     signal_noised2 = original_signal + np.random.normal(0, np.sqrt(30), len(original_signal))
     partial_correlation_results.append(partial_correlation.partial_correlation(np.array([original_signal, signal_noised]), signal_noised2)[0][1])
 plot_df["Partial correlation"] = partial_correlation_results
-
+"""
 
 print("ICOV...")
 # ICOV
@@ -75,7 +75,9 @@ print("Transfer entropy...")
 transfer_entropy_results = []
 for noise_amount in noise_amounts:
     signal_noised = original_signal + np.random.normal(0, np.sqrt(noise_amount), len(original_signal))
-    transfer_entropy_results.append(transfer_entropy.transfer_entropy(np.array([original_signal, signal_noised]))[0][1])
+    input1 = np.digitize(original_signal, bins=[original_signal.mean()])
+    input2 = np.digitize(signal_noised, bins=[signal_noised.mean()])
+    transfer_entropy_results.append(transfer_entropy.transfer_entropy(np.array([input1, input2]))[0][1])
 plot_df["Transfer entropy"] = transfer_entropy_results
 
 print("Coherence...")

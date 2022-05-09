@@ -1,4 +1,4 @@
-from measures import pearson, covariance, mutual_information, partial_correlation, icov, tangent, cross_correlation, transfer_entropy, coherence
+from measures import pearson, covariance, mutual_information, partial_correlation, icov, cross_correlation, transfer_entropy, coherence
 import numpy as np
 import pandas as pd
 import neurolib
