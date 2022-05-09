@@ -43,13 +43,16 @@ for noise_amount in noise_amounts:
     mutual_information_results.append(mutual_information.mutual_information(np.array([original_signal, signal_noised]))[0][1])
 plot_df["Mutual information"] = mutual_information_results
 
+
 print("Partial correlation...")
 # Partial correlation
 partial_correlation_results = []
 for noise_amount in noise_amounts:
     signal_noised = original_signal + np.random.normal(0, np.sqrt(noise_amount), len(original_signal))
-    partial_correlation_results.append(partial_correlation.partial_correlation(np.array([original_signal, signal_noised]))[0][1])
+    signal_noised2 = original_signal + np.random.normal(0, np.sqrt(30), len(original_signal))
+    partial_correlation_results.append(partial_correlation.partial_correlation(np.array([original_signal, signal_noised]), signal_noised2)[0][1])
 plot_df["Partial correlation"] = partial_correlation_results
+
 
 print("ICOV...")
 # ICOV
@@ -58,16 +61,6 @@ for noise_amount in noise_amounts:
     signal_noised = original_signal + np.random.normal(0, np.sqrt(noise_amount), len(original_signal))
     icov_results.append(icov.ICOV(np.array([original_signal, signal_noised]))[0][1])
 plot_df["ICOV"] = icov_results
-
-"""
-print("Tangent...")
-# Tangent
-tangent_results = []
-for noise_amount in noise_amounts:
-    signal_noised = original_signal + np.random.normal(0, np.sqrt(noise_amount), len(original_signal))
-    tangent_results.append(tangent.tangent(np.array([original_signal, signal_noised]))[0][1])
-plot_df["Tangent"] = tangent_results
-"""
 
 print("Cross correlation...")
 # Cross correlation

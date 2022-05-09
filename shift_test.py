@@ -46,6 +46,7 @@ for shift_amount in shift_amounts:
     mutual_information_results.append(mutual_information.mutual_information(np.array([original_signal[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX], signal_shifted]))[0][1])
 plot_df["Mutual information"] = mutual_information_results
 
+"""
 print("Partial correlation...")
 # Partial correlation
 partial_correlation_results = []
@@ -53,6 +54,7 @@ for shift_amount in shift_amounts:
     signal_shifted = np.roll(original_signal, shift_amount)[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX]
     partial_correlation_results.append(partial_correlation.partial_correlation(np.array([original_signal[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX], signal_shifted]))[0][1])
 plot_df["Partial correlation"] = partial_correlation_results
+"""
 
 print("ICOV...")
 # ICOV

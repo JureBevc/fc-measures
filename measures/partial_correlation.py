@@ -1,17 +1,18 @@
 import numpy as np
+import pandas as pd
+from pingouin import partial_corr
 
 
-def partial_correlation(arr):
-    """
-    Explanation:
-    https://stats.stackexchange.com/questions/140080/why-does-inversion-of-a-covariance-matrix-yield-partial-correlations-between-ran
-    """
-    try:
-        PR = -np.linalg.inv(np.corrcoef(arr))
-        np.fill_diagonal(PR, 1)
-        return PR
-    except np.linalg.LinAlgError:
-        # Attempt pseudo-inverse
-        PR = -np.linalg.pinv(np.corrcoef(arr))
-        np.fill_diagonal(PR, 1)
-        return PR
+def partial_correlation(arr, control):
+    result = np.zeros((arr.shape[0], arr.shape[0]))
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            df = pd.DataFrame({
+                "x": arr[i],
+                "y": arr[j],
+                "c": control
+            })
+            pc = partial_corr(data=df, x="x", y="y", covar="c")["r"].values[0]
+            result[i][j] = pc
+            result[j][i] = result[i][j]
+    return result

@@ -126,5 +126,8 @@ https://www.fieldtriptoolbox.org/assets/img/workshop/madrid2019/tutorial_erp/tsk
 
 # Meeting notes
 
-- Kako primerjati rezultate med seboj, ker niso na istem intervalu?
-- Kako testirati tangent space metriko, ki potrebuje skupino podakov/ljudi?
+- navzrkrižna-korelacija -> križna-korelacija?
+- dodelati Koherenco: dober opis in definicija križno-korelacijski močnostni spekter?
+- Literatura za Tangentni prostor kovariančnih matrik
+
+- dodaj reference
