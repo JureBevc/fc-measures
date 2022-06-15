@@ -7,7 +7,7 @@ from neurolib.utils.loadData import Dataset
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-
+from PyIF import te_compute as te
 
 model = ALNModel()
 model.params['sigma_ou'] = 0  # add some noise
@@ -84,6 +84,7 @@ for noise_amount in noise_amounts:
 plot_df["Tangent"] = tangent_results
 """
 
+"""
 print("Cross correlation...")
 # Cross correlation
 cross_correlation_results = []
@@ -91,13 +92,17 @@ for shift_amount in shift_amounts:
     signal_shifted = np.roll(original_signal, shift_amount)[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX]
     cross_correlation_results.append(cross_correlation.cross_correlation(np.array([original_signal[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX], signal_shifted]))[0][1])
 plot_df["Navzkrižna korelacija"] = cross_correlation_results
+"""
 
 print("Transfer entropy...")
 # Transfer entropy
 transfer_entropy_results = []
 for shift_amount in shift_amounts:
     signal_shifted = np.roll(original_signal, shift_amount)[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX]
-    transfer_entropy_results.append(transfer_entropy.transfer_entropy(np.array([original_signal[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX], signal_shifted]))[0][1])
+    org_sig = original_signal[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX]
+    input1 = np.digitize(org_sig, bins=[org_sig.mean()])
+    input2 = np.digitize(signal_shifted, bins=[signal_shifted.mean()])
+    transfer_entropy_results.append(transfer_entropy.transfer_entropy(np.array([input1, input2]))[0][1])
 plot_df["Entropija prenosa"] = transfer_entropy_results
 
 print("Coherence...")
