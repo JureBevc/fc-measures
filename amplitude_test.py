@@ -82,7 +82,9 @@ print("Transfer entropy...")
 transfer_entropy_results = []
 for amplitude_amount in amplitude_amounts:
     signal_increased = original_signal * amplitude_amount
-    transfer_entropy_results.append(transfer_entropy.transfer_entropy(np.array([original_signal, signal_increased]))[0][1])
+    input1 = np.digitize(original_signal, bins=[original_signal.mean()])
+    input2 = np.digitize(signal_increased, bins=[signal_increased.mean()])
+    transfer_entropy_results.append(transfer_entropy.transfer_entropy(np.array([input1, input2]))[0][1])
 plot_df["Transfer entropy"] = transfer_entropy_results
 
 print("Coherence...")
