@@ -98,7 +98,6 @@ for noise_amount in noise_amounts:
 plot_df["Tangent"] = tangent_results
 """
 
-"""
 print("Cross correlation...")
 # Cross correlation
 cross_correlation_results = []
@@ -108,7 +107,7 @@ for shift_amount in shift_amounts:
     cross_correlation_results.append(cross_correlation.cross_correlation(np.array(
         [original_signal[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX], signal_shifted]))[0][1])
 plot_df["Navzkrižna korelacija"] = cross_correlation_results
-"""
+
 
 print("Transfer entropy...")
 # Transfer entropy
