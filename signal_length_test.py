@@ -17,7 +17,6 @@ plot_df["Signal length"] = signal_lengths
 
 methods = {
     "Pearsonov koeficient": pearson.pearson,
-    "Kovarianca": covariance.covariance,
     "Vzajemna informacija": mutual_information.mutual_information,
     "Inverzna kovarianca": icov.ICOV,
     "Navzkrižna korelacija": cross_correlation.cross_correlation,
@@ -77,7 +76,7 @@ for method in methods:
 
 
 fig = make_subplots(
-    rows=4,
+    rows=3,
     cols=2,
     subplot_titles=plot_df.loc[:, plot_df.columns != "Signal length"].columns,
     x_title="Dolžina signala",
@@ -91,6 +90,7 @@ for i, column in enumerate(plot_df.loc[:, plot_df.columns != "Signal length"].co
                   col=1 + i % 2)
     #fig["layout"][f"xaxis{i}" if i > 0 else "xaxis"]["title"]= "σ"
     #fig["layout"][f"yaxis{i}"]["title"]= "Label X axis 2"
+    fig["layout"][f"yaxis{i+1}"]["range"] = [0, 4]
 
 fig.update_layout(title_text="Signal length test",
                   font=dict(

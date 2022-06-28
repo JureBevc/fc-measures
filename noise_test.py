@@ -16,6 +16,7 @@ model.run(bold=True)
 original_signal = model.output[0][7000:]
 noise_amounts = np.linspace(0, 25, 100)
 
+bin_values = np.linspace(min(original_signal), max(original_signal), 67)
 print(len(original_signal))
 
 plot_df = pd.DataFrame()
@@ -47,8 +48,8 @@ mutual_information_results = []
 for noise_amount in noise_amounts:
     signal_noised = original_signal + \
         np.random.normal(0, noise_amount, len(original_signal))
-    input1 = np.digitize(original_signal, bins=[original_signal.mean()])
-    input2 = np.digitize(signal_noised, bins=[signal_noised.mean()])
+    input1 = np.digitize(original_signal, bins=bin_values)
+    input2 = np.digitize(signal_noised, bins=bin_values)
     mutual_information_results.append(mutual_information.mutual_information(
         np.array([input1, input2]))[0][1])
 plot_df["Vzajemna informacija"] = mutual_information_results
@@ -109,7 +110,7 @@ plot_df["Koherenca"] = coherence_results
 #plot_df = (plot_df - plot_df.mean())/plot_df.std()
 
 fig = make_subplots(
-    rows=4,
+    rows=3,
     cols=2,
     subplot_titles=plot_df.loc[:, plot_df.columns != "Noise amount"].columns,
     x_title="σ",

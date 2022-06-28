@@ -1,13 +1,11 @@
 from measures import pearson, mutual_information, icov, cross_correlation, transfer_entropy, coherence
 import numpy as np
 import pandas as pd
-import neurolib
 from neurolib.models.aln import ALNModel
 from neurolib.utils.loadData import Dataset
 import plotly.express as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from PyIF import te_compute as te
 
 model = ALNModel()
 model.params['sigma_ou'] = 0  # add some noise
@@ -16,6 +14,18 @@ model.run(bold=True)
 
 original_signal = model.output[0]
 
+"""
+q75, q25 = np.percentile(original_signal, [75 ,25])
+iqr = q75 - q25
+print(iqr)
+n3 = np.power(len(original_signal), 1/3)
+h = 2 * iqr / n3
+print(h)
+print((max(original_signal) - min(original_signal)) / h)
+exit()
+"""
+
+bin_values = np.linspace(min(original_signal), max(original_signal), 67)
 
 shift_amounts = np.arange(0, 1500, step=10)
 
@@ -62,8 +72,8 @@ for shift_amount in shift_amounts:
     signal_shifted = np.roll(original_signal, shift_amount)[
         SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX]
     org_sig = original_signal[SIGNAL_MIN_INDEX:SIGNAL_MAX_INDEX]
-    input1 = np.digitize(org_sig, bins=[org_sig.mean()])
-    input2 = np.digitize(signal_shifted, bins=[signal_shifted.mean()])
+    input1 = np.digitize(org_sig, bins=bin_values)
+    input2 = np.digitize(signal_shifted, bins=bin_values)
     mutual_information_results.append(mutual_information.mutual_information(np.array(
         [input1, input2]))[0][1])
 plot_df["Vzajemna informacija"] = mutual_information_results
@@ -134,7 +144,7 @@ plot_df["Koherenca"] = coherence_results
 #plot_df = (plot_df - plot_df.mean())/plot_df.std()
 
 fig = make_subplots(
-    rows=4,
+    rows=3,
     cols=2,
     subplot_titles=plot_df.loc[:, plot_df.columns != "Shift amount"].columns,
     x_title="δ",

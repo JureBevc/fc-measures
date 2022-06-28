@@ -11,13 +11,12 @@ import time
 import json
 
 plot_df = pd.DataFrame()
-signal_counts = [i for i in range(1000, 5000, 1000)]
+signal_counts = [i for i in range(1000, 10000, 1000)]
 plot_df["Signal count"] = signal_counts
 SIGNAL_LENGTH = 100
 
 methods = {
     "Pearsonov koeficient": pearson.pearson,
-    "Kovarianca": covariance.covariance,
     "Vzajemna informacija": mutual_information.mutual_information,
     "Inverzna kovarianca": icov.ICOV,
     "Navzkrižna korelacija": cross_correlation.cross_correlation,
@@ -57,7 +56,7 @@ for method in methods:
                 print(signal_count)
             input_array = np.random.rand(signal_count, SIGNAL_LENGTH)
             temp_results = []
-            for i in range(1000):
+            for i in range(10):
                 start_time = time.time() * 1000
                 pearson.pearson(input_array)
                 end_time = time.time() * 1000
@@ -88,6 +87,7 @@ for i, column in enumerate(plot_df.loc[:, plot_df.columns != "Signal count"].col
                   col=1 + i % 2)
     #fig["layout"][f"xaxis{i}" if i > 0 else "xaxis"]["title"]= "σ"
     #fig["layout"][f"yaxis{i}"]["title"]= "Label X axis 2"
+    fig["layout"][f"yaxis{i+1}"]["range"] = [0, 2500]
 
 fig.update_layout(title_text="Dimension test",
                   font=dict(
