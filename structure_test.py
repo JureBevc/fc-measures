@@ -1,5 +1,3 @@
-import enum
-from re import I
 from measures import pearson, mutual_information, icov, cross_correlation, transfer_entropy, coherence
 import numpy as np
 import pandas as pd
@@ -17,6 +15,7 @@ A_original = np.random.rand(SIGNAL_LENGTH)
 B_original = np.random.rand(SIGNAL_LENGTH)
 C_original = np.random.rand(SIGNAL_LENGTH)
 
+bin_values = np.linspace(0, 1, 12)
 methods = [
     pearson.pearson,
     mutual_information.mutual_information,
@@ -46,7 +45,15 @@ for i, method in enumerate(methods):
     input2 = (A + B) / 2
     input3 = (A + C) / 2
 
-    if i == 1 or i == 4:
+    if i == 1:
+        A = np.digitize(A, bins=bin_values)
+        B = np.digitize(B, bins=bin_values)
+        C = np.digitize(C, bins=bin_values)
+        input1 = np.digitize(input1, bins=bin_values)
+        input2 = np.digitize(input2, bins=bin_values)
+        input3 = np.digitize(input3, bins=bin_values)
+
+    elif i == 4:
         A = np.digitize(A, bins=[np.mean(A)])
         B = np.digitize(B, bins=[np.mean(B)])
         C = np.digitize(C, bins=[np.mean(C)])
@@ -91,7 +98,15 @@ for i, method in enumerate(methods):
     input2 = (A + B) / 2
     input3 = (input2 + C) / 2
 
-    if i == 1 or i == 4:
+    if i == 1:
+        A = np.digitize(A, bins=bin_values)
+        B = np.digitize(B, bins=bin_values)
+        C = np.digitize(C, bins=bin_values)
+        input1 = np.digitize(input1, bins=bin_values)
+        input2 = np.digitize(input2, bins=bin_values)
+        input3 = np.digitize(input3, bins=bin_values)
+
+    elif i == 4:
         A = np.digitize(A, bins=[np.mean(A)])
         B = np.digitize(B, bins=[np.mean(B)])
         C = np.digitize(C, bins=[np.mean(C)])
@@ -137,7 +152,15 @@ for i, method in enumerate(methods):
     input2 = B
     input3 = (A + B + C) / 3
 
-    if i == 1 or i == 4:
+    if i == 1:
+        A = np.digitize(A, bins=bin_values)
+        B = np.digitize(B, bins=bin_values)
+        C = np.digitize(C, bins=bin_values)
+        input1 = np.digitize(input1, bins=bin_values)
+        input2 = np.digitize(input2, bins=bin_values)
+        input3 = np.digitize(input3, bins=bin_values)
+
+    elif i == 4:
         A = np.digitize(A, bins=[np.mean(A)])
         B = np.digitize(B, bins=[np.mean(B)])
         C = np.digitize(C, bins=[np.mean(C)])
