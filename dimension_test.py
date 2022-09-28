@@ -28,7 +28,7 @@ methods = {
 def saved_mean(method):
     b = []
     try:
-        with open(method + " mean", "r") as fp:
+        with open("test_cache/" + method + " mean", "r") as fp:
             b = json.load(fp)
     except Exception as e:
         pass
@@ -38,7 +38,7 @@ def saved_mean(method):
 def saved_std(method):
     b = []
     try:
-        with open(method + " std", "r") as fp:
+        with open("test_cache/" + method + " std", "r") as fp:
             b = json.load(fp)
     except Exception as e:
         pass
